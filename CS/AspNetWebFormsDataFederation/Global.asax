@@ -1,0 +1,1 @@
+<%@ Application Codebehind="Global.asax.cs" Inherits="AspNetWebFormsDataFederation.Global_asax" Language="C#" %>
