@@ -120,7 +120,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
-    <Content Include="App_Data\Sales.xlsx" />
+    <Content Include="App_Data\Categories.json" />
+    <Content Include="App_Data\nwind.db" />
+    <Content Include="App_Data\SalesPerson.xlsx" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
