@@ -1,0 +1,98 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+.headerPane 
+{
+    background-color: #EDEDED;
+    background-position: left top;
+    background-repeat: no-repeat;
+    font-family: Tahoma;
+}
+.headerPane .headerTop
+{
+    height: 45px;
+}
+.loginControl 
+{
+    float: right;
+    margin-top: 17px;
+    margin-right: 25px;
+    font-size: 12px;
+}
+.loginControl a 
+{
+    color: black;
+    text-decoration: none;
+    border-bottom: dashed 1px black;
+    display: inline-block;
+}
+.content 
+{
+    padding: 5px;
+}
+
+
+/* Account */
+.accountHeader h2 
+{
+    margin: 10px 0 7px 0;
+    font-size: 16px;
+}
+.accountHeader p 
+{
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+.accountHeader 
+{
+    margin-bottom: 20px;
+}
+
+
+/* Moderno */
+.dxsplControl_Moderno 
+{
+    font-family: Segoe UI;
+}
+.dxsplControl_Moderno .headerPane,
+.dxsplControl_Moderno .footerMenu li
+{
+    background-color: White;
+    color: Black;
+}
+.dxsplControl_Moderno .accountHeader h2
+{
+    color: #3B3B3B;
+}
+.dxsplControl_Moderno .accountHeader p
+{
+    font-size: 11px;
+}
+.dxsplControl_Moderno .headerMenu 
+{
+    margin-top: 13px;
+}
+.dxsplControl_Moderno .loginControl a,
+.dxsplControl_Moderno .templateTitle a
+{
+    color: #0072c6;
+    border-color: #0072c6;
+}
+.dxsplControl_Moderno .templateTitle a 
+{
+    font-size: 28px;
+}
+.dxsplControl_Moderno .dxsplVSeparator_Moderno 
+{
+    border-bottom: 0!important;
+    border-left: 1px solid #d1d1d1;
+    border-right: 1px solid #d1d1d1;
+}
+.dxsplControl_Moderno .footerPane 
+{
+    background: #EDEDED;
+}

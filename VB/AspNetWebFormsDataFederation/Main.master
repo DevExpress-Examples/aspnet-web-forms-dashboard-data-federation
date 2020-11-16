@@ -1,0 +1,34 @@
+<%@ Master Language="vb" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="Main.master.vb" Inherits="AspNetWebFormsDataFederation.MainMaster" %>
+
+<%-- DXCOMMENT: Page Main.master is a master page that contains central area layout --%>
+<asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
+	<dx:ASPxSplitter ID="ContentSplitter" runat="server" Width="100%" Height="100%">
+				<ClientSideEvents PaneResized="function(s, e) { 
+			if(window.ASPxGridView1 && e.pane.name == 'ContentCenter')
+				ASPxGridView1.SetHeight(e.pane.GetClientHeight());
+			}" />
+						<Styles>
+			<Pane>
+				<Paddings Padding="0px" />
+				<Border BorderWidth="0px" />
+			</Pane>
+		</Styles>
+		<Panes>
+			<dx:SplitterPane Name="ContentCenter" ScrollBars="Auto">
+				<PaneStyle CssClass="contentPane"></PaneStyle>
+				<Separator Visible="True">
+					<SeparatorStyle>
+						<Border BorderWidth="1px" />
+						<BorderTop BorderWidth="0px" />
+					</SeparatorStyle>
+				</Separator>
+				<ContentCollection>
+					<dx:SplitterContentControl>
+						<asp:ContentPlaceHolder ID="MainContent" runat="server" />
+					</dx:SplitterContentControl>
+				</ContentCollection>
+			</dx:SplitterPane>
+
+		</Panes>
+	</dx:ASPxSplitter>
+</asp:Content>
