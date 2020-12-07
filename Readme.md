@@ -19,15 +19,16 @@ This example demonstrates the following query types you can use to create a data
 
 * **Join**
     
-    Combines rows from two or more tables based on a column they share. The join type specifies records that have matching values in both tables.
+    Combines rows from two or more tables based on a clause. The join type specifies records that have matching values in both tables.
 
 * **Union and UnionAll**
 
-    **Union** combines rows from two or more tables into a single data set and removes duplicate rows in merged tables. **UnionAll** operates in the same manner as **Union**, but duplicates rows from different tables when they contain the same data. You can create a union query for data sources if data types of their columns are [implicitly converted](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/types/casting-and-type-conversions#implicit-conversions).        
+    The **Union** query combines rows from two or more tables into one data set and removes duplicate rows in merged tables. The **UnionAll** query does the same, except it doesn't remove duplicated rows. You can create a union query for data sources if data types of their columns are [implicitly converted](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/types/casting-and-type-conversions#implicit-conversions).        
     
 * **Transformation**
 
-    If a data source contains a complex column (an object), you can transform its properties to display them as separate columns in a flattened view. If one of the data column is an array, you can unfold its values and display a new data row for every element of the array. When you unfold the column, you can flatten it and create a flattened view.
+    If a data source contains a complex column (an object), you can transform its properties to display them as separate columns in a flattened view. If one of the data columns is an array, you can unfold its values and display a new data row for every element of the array. When you unfold the column, you can flatten it and create a flattened view
+
 
 ## Documentation
 
