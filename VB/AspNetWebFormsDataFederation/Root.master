@@ -1,4 +1,4 @@
-<%@ Master Language="vb" AutoEventWireup="true" CodeBehind="Root.master.vb" Inherits="AspNetWebFormsDataFederation.RootMaster" %>
+﻿<%@ Master Language="vb" AutoEventWireup="true" CodeBehind="Root.master.vb" Inherits="AspNetWebFormsDataFederation.RootMaster" %>
 
 <%-- DXCOMMENT: Page Root.master is a master page that contains the root layout (it includes Header, Cental Area, and Footer) --%>
 <!DOCTYPE html>

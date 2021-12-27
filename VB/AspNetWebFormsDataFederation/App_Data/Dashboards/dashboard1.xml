@@ -102,16 +102,16 @@
       </Query>
       <ConnectionOptions CloseConnection="true" />
     </SqlDataSource>
-    <ExcelDataSource Name="Excel Data Source" FileName="D:\work\projects\AspNetCoreDataFederation\AspNetCoreDataFederation\Data\SalesPerson.xlsx" ComponentName="excelDataSource1">
+    <ExcelDataSource Name="Excel Data Source" FileName="SalesPerson.xlsx" ComponentName="excelDataSource1" ConnectionName="excelSales">
       <Options Type="DevExpress.DataAccess.Excel.ExcelSourceOptions" SkipEmptyRows="true" UseFirstRowAsHeader="true" SkipHiddenColumns="true" SkipHiddenRows="true">
         <ImportSettings Type="DevExpress.DataAccess.Excel.ExcelWorksheetSettings" WorksheetName="Data" />
       </Options>
       <Schema />
       <ResultSchema />
     </ExcelDataSource>
-    <ObjectDataSource Name="Object Data Source" ComponentName="objectDataSource1" />
-    <JsonDataSource Name="JSON Data Source" ComponentName="jsonDataSource1">
-      <Source SourceType="DevExpress.DataAccess.Json.UriJsonSource" Uri="file:///D:/work/projects/AspNetCoreDataFederation/AspNetCoreDataFederation/Data/Categories.json" />
+    <ObjectDataSource Name="Object Data Source" ComponentName="objectDataSource1" DataId="odsInvoices" />
+    <JsonDataSource Name="JSON Data Source" ComponentName="jsonDataSource1" ConnectionName="jsonCategories">
+      <Source SourceType="DevExpress.DataAccess.Json.UriJsonSource" Uri="Categories.json" />
     </JsonDataSource>
   </DataSources>
   <Items>

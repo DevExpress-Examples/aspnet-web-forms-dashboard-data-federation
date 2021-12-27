@@ -1,4 +1,4 @@
-<%@ Master Language="vb" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="Main.master.vb" Inherits="AspNetWebFormsDataFederation.MainMaster" %>
+﻿<%@ Master Language="vb" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="Main.master.vb" Inherits="AspNetWebFormsDataFederation.MainMaster" %>
 
 <%-- DXCOMMENT: Page Main.master is a master page that contains central area layout --%>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">

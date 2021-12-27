@@ -1,16 +1,16 @@
-Imports Microsoft.VisualBasic
+﻿Imports System
+Imports System.Web.Hosting
 Imports DevExpress.DashboardCommon
 Imports DevExpress.DashboardWeb
 Imports DevExpress.DataAccess.DataFederation
 Imports DevExpress.DataAccess.Excel
 Imports DevExpress.DataAccess.Json
 Imports DevExpress.DataAccess.Sql
-Imports System
-Imports System.Web.Hosting
 
 Namespace AspNetWebFormsDataFederation
 	Partial Public Class [Default]
 		Inherits System.Web.UI.Page
+
 		Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs)
 			Dim dashboardFileStorage As New DashboardFileStorage("~/App_Data/Dashboards")
 			ASPxDashboard1.SetDashboardStorage(dashboardFileStorage)
@@ -27,14 +27,17 @@ Namespace AspNetWebFormsDataFederation
 
 			' Configures an Object data source.
 			Dim objDataSource As New DashboardObjectDataSource("Object Data Source")
+			objDataSource.DataId = "odsInvoices"
 
 			' Configures an Excel data source.
 			Dim excelDataSource As New DashboardExcelDataSource("Excel Data Source")
+			excelDataSource.ConnectionName = "excelSales"
 			excelDataSource.FileName = HostingEnvironment.MapPath("~/App_Data/SalesPerson.xlsx")
 			excelDataSource.SourceOptions = New ExcelSourceOptions(New ExcelWorksheetSettings("Data"))
 
 			' Configures a JSON data source.
 			Dim jsonDataSource As New DashboardJsonDataSource("JSON Data Source")
+			jsonDataSource.ConnectionName = "jsonCategories"
 			Dim fileUri As New Uri(HostingEnvironment.MapPath("~/App_Data/Categories.json"), UriKind.RelativeOrAbsolute)
 			jsonDataSource.JsonSource = New UriJsonSource(fileUri)
 
@@ -44,14 +47,21 @@ Namespace AspNetWebFormsDataFederation
 			ASPxDashboard1.SetDataSourceStorage(dataSourceStorage)
 		End Sub
 
+		Protected Sub ASPxDashboard1_ConfigureDataConnection(ByVal sender As Object, ByVal e As ConfigureDataConnectionWebEventArgs)
+			If e.ConnectionName = "excelSales" Then
+				TryCast(e.ConnectionParameters, ExcelDataSourceConnectionParameters).FileName = HostingEnvironment.MapPath("~/App_Data/SalesPerson.xlsx")
+			ElseIf e.ConnectionName = "jsonCategories" Then
+				e.ConnectionParameters = New JsonSourceConnectionParameters() With {.JsonSource = New UriJsonSource(New Uri(HostingEnvironment.MapPath("~/App_Data/Categories.json"), UriKind.RelativeOrAbsolute))}
+			End If
+		End Sub
+
 		Protected Sub DataLoading(ByVal sender As Object, ByVal e As DataLoadingWebEventArgs)
-			If e.DataSourceName = "Object Data Source" Then
+			If e.DataId = "odsInvoices" Then
 				e.Data = Invoices.CreateData()
 			End If
 		End Sub
 
 		Private Shared Function CreateFederatedDataSource(ByVal sqlDS As DashboardSqlDataSource, ByVal excelDS As DashboardExcelDataSource, ByVal objDS As DashboardObjectDataSource, ByVal jsonDS As DashboardJsonDataSource) As DashboardFederationDataSource
-
 			Dim federationDataSource As New DashboardFederationDataSource("Federated Data Source")
 
 			Dim sqlSource As New Source("sqlSource", sqlDS, "SQL Orders")

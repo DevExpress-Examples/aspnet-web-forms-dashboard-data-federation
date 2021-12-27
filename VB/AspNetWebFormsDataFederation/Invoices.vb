@@ -1,91 +1,18 @@
-Imports Microsoft.VisualBasic
-Imports System
+﻿Imports System
 Imports System.Collections.Generic
 
 Namespace AspNetWebFormsDataFederation
 	Public Class Invoices
 		Private Shared rnd As New Random()
-		Private privateCountry As String
 		Public Property Country() As String
-			Get
-				Return privateCountry
-			End Get
-			Set(ByVal value As String)
-				privateCountry = value
-			End Set
-		End Property
-		Private privateCity As String
 		Public Property City() As String
-			Get
-				Return privateCity
-			End Get
-			Set(ByVal value As String)
-				privateCity = value
-			End Set
-		End Property
-		Private privateProductName As String
 		Public Property ProductName() As String
-			Get
-				Return privateProductName
-			End Get
-			Set(ByVal value As String)
-				privateProductName = value
-			End Set
-		End Property
-		Private privateOrderDate As DateTime
-		Public Property OrderDate() As DateTime
-			Get
-				Return privateOrderDate
-			End Get
-			Set(ByVal value As DateTime)
-				privateOrderDate = value
-			End Set
-		End Property
-		Private privateQuantity As Integer
+		Public Property OrderDate() As Date
 		Public Property Quantity() As Integer
-			Get
-				Return privateQuantity
-			End Get
-			Set(ByVal value As Integer)
-				privateQuantity = value
-			End Set
-		End Property
-		Private privateDiscount As Double
 		Public Property Discount() As Double
-			Get
-				Return privateDiscount
-			End Get
-			Set(ByVal value As Double)
-				privateDiscount = value
-			End Set
-		End Property
-		Private privateExtendedPrice As Double
 		Public Property ExtendedPrice() As Double
-			Get
-				Return privateExtendedPrice
-			End Get
-			Set(ByVal value As Double)
-				privateExtendedPrice = value
-			End Set
-		End Property
-		Private privateFreigth As Double
 		Public Property Freigth() As Double
-			Get
-				Return privateFreigth
-			End Get
-			Set(ByVal value As Double)
-				privateFreigth = value
-			End Set
-		End Property
-		Private privateUnitPrice As Double
 		Public Property UnitPrice() As Double
-			Get
-				Return privateUnitPrice
-			End Get
-			Set(ByVal value As Double)
-				privateUnitPrice = value
-			End Set
-		End Property
 
 		Public Shared Function CreateData() As List(Of Invoices)
 			Dim data As New List(Of Invoices)()
@@ -124,10 +51,10 @@ data.Add(New Invoices With {.Country = "Germany", .City = "Cunewalde", .ProductN
 			Return data
 		End Function
 
-		Private Shared Function GenerateOrderDate() As DateTime
-			Dim startYear As Integer = DateTime.Today.Year - 3
-			Dim endYear As Integer = DateTime.Today.Year
-			Return New DateTime(rnd.Next(startYear, endYear), rnd.Next(1, 13), rnd.Next(1, 29))
+		Private Shared Function GenerateOrderDate() As Date
+			Dim startYear As Integer = Date.Today.Year - 3
+			Dim endYear As Integer = Date.Today.Year
+			Return New Date(rnd.Next(startYear, endYear), rnd.Next(1, 13), rnd.Next(1, 29))
 		End Function
 	End Class
 End Namespace

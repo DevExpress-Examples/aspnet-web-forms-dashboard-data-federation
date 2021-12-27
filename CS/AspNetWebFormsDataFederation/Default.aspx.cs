@@ -1,11 +1,11 @@
+using System;
+using System.Web.Hosting;
 using DevExpress.DashboardCommon;
 using DevExpress.DashboardWeb;
 using DevExpress.DataAccess.DataFederation;
 using DevExpress.DataAccess.Excel;
 using DevExpress.DataAccess.Json;
 using DevExpress.DataAccess.Sql;
-using System;
-using System.Web.Hosting;
 
 namespace AspNetWebFormsDataFederation {
     public partial class Default : System.Web.UI.Page {
@@ -28,14 +28,17 @@ namespace AspNetWebFormsDataFederation {
 
             // Configures an Object data source.
             DashboardObjectDataSource objDataSource = new DashboardObjectDataSource("Object Data Source");
+            objDataSource.DataId = "odsInvoices";
 
             // Configures an Excel data source.
             DashboardExcelDataSource excelDataSource = new DashboardExcelDataSource("Excel Data Source");
+            excelDataSource.ConnectionName = "excelSales";
             excelDataSource.FileName = HostingEnvironment.MapPath(@"~/App_Data/SalesPerson.xlsx");
             excelDataSource.SourceOptions = new ExcelSourceOptions(new ExcelWorksheetSettings("Data"));
 
             // Configures a JSON data source.
             DashboardJsonDataSource jsonDataSource = new DashboardJsonDataSource("JSON Data Source");
+            jsonDataSource.ConnectionName = "jsonCategories";
             Uri fileUri = new Uri(HostingEnvironment.MapPath(@"~/App_Data/Categories.json"), UriKind.RelativeOrAbsolute);
             jsonDataSource.JsonSource = new UriJsonSource(fileUri);
 
@@ -46,8 +49,18 @@ namespace AspNetWebFormsDataFederation {
             ASPxDashboard1.SetDataSourceStorage(dataSourceStorage);
         }
 
+        protected void ASPxDashboard1_ConfigureDataConnection(object sender, ConfigureDataConnectionWebEventArgs e) {
+            if (e.ConnectionName == "excelSales") {
+                (e.ConnectionParameters as ExcelDataSourceConnectionParameters).FileName = HostingEnvironment.MapPath(@"~/App_Data/SalesPerson.xlsx");
+            } else if (e.ConnectionName == "jsonCategories") {
+                e.ConnectionParameters = new JsonSourceConnectionParameters() {
+                    JsonSource = new UriJsonSource(new Uri(HostingEnvironment.MapPath(@"~/App_Data/Categories.json"), UriKind.RelativeOrAbsolute))
+                };
+            }
+        }
+
         protected void DataLoading(object sender, DataLoadingWebEventArgs e) {
-            if(e.DataSourceName == "Object Data Source") {
+            if(e.DataId == "odsInvoices") {
                 e.Data = Invoices.CreateData();
             }
         }

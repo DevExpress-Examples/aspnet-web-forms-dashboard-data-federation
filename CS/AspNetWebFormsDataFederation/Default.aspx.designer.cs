@@ -8,9 +8,10 @@
 //------------------------------------------------------------------------------
 
 namespace AspNetWebFormsDataFederation {
-    
+
+
     public partial class Default {
-        
+
         /// <summary>
         /// ASPxDashboard1 control.
         /// </summary>
